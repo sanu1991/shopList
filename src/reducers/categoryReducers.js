@@ -1,4 +1,4 @@
-const initialState = { shops: [] };
+const initialState = { shops: [], edit: {} };
 
 const categoryReducers = (state = initialState, { type, payload, payload1 }) => {
     switch (type) {
@@ -9,6 +9,20 @@ const categoryReducers = (state = initialState, { type, payload, payload1 }) => 
             const filtered0 = payload1.filter((e) => e != payload);
             console.log(filtered0);
             return { ...state, shops: [...filtered0] };
+
+        case "EDT":
+            console.log(payload, payload1);
+            console.log(state);
+            return { ...state, edit: payload };
+
+        case "EDIT_SHOPS":
+            console.log(state);
+            console.log(payload, payload1);
+            const index = payload1.findIndex((e) => e.id === payload.id);
+            console.log(index);
+            payload1[index] = payload;
+            console.log(payload1, payload);
+            return { ...state, shops: [...payload1], edit: {} };
 
         case "CAT_SHOPS":
             console.log(payload, payload1);

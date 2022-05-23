@@ -10,13 +10,6 @@ export const addShops = (shops) => {
         payload: shops,
     };
 };
-export const editShops = (inputs, shop) => {
-    return {
-        type: 'EDIT_SHOPS',
-        payload: inputs,
-        payload1: shop,
-    };
-};
 export const dlt = (shops, shopItem) => {
     return {
         type: 'DLT_SHOPS',
@@ -29,6 +22,13 @@ export const edt = (shops, shopItem) => {
         type: 'EDT',
         payload: shops,
         payload1: shopItem,
+    };
+};
+export const editShops = (inputs, shop) => {
+    return {
+        type: 'EDIT_SHOPS',
+        payload: inputs,
+        payload1: shop,
     };
 };
 export const category = (shops, curItem) => {

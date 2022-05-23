@@ -28,7 +28,7 @@ const Home = () => {
         getData();
     }, []);
 
-    console.log(shops);
+
 
 
     const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
@@ -47,9 +47,10 @@ const Home = () => {
     console.log(inputs);
     const handleSubmit = (event) => {
         event.preventDefault();
-        setInputs({});
-        console.log(inputs);
         dispatch(editShops(inputs, shops));
+        setInputs({});
+        // setInputs(values => ({}));
+        console.log(inputs);
     }
 
 
@@ -80,7 +81,60 @@ const Home = () => {
                                         <td className="align-middle">{shopItem.area} </td>
                                         <td className="align-middle">{shopItem.category} </td>
                                         <td className="align-middle">
+                                            <a onClick={() => dispatch(edt(shopItem, shops))} style={{ textDecoration: "none", border: "1px solid white", padding: "2px 5px" }} className="m-1 text-center text-white" data-bs-toggle="modal" data-bs-target="#exampleModal1">Edit</a>
+                                            {/* modal  */}
+                                            <div class="modal fade" id="exampleModal1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title text-dark" id="exampleModalLabel">Edit Shop</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div className="container-fluid">
+                                                                <form class="row g-3 mx-auto fs-5" onSubmit={handleSubmit}>
+                                                                    <div class="col-md-12">
+                                                                        <label class="form-label text-dark text-right">SHOP NAME</label>
+                                                                        <input type="text" name="shopName" class="form-control" placeholder={edit.shopName} value={inputs.shopName || ""} onChange={handleChange} required />
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <label class="form-label text-dark text-right">LOCATION</label>
+                                                                        <input type="text" name="area" class="form-control" placeholder={edit.area} value={inputs.area || ""} onChange={handleChange} required />
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <label class="form-label text-dark text-right">CATEGORY</label>
+                                                                        <input type="text" name="category" class="form-control" placeholder={edit.category} value={inputs.category || ""} onChange={handleChange} required />
+                                                                    </div>
+                                                                    <div class="col-12">
+                                                                        <label class="form-label text-dark text-right">OFF DAY</label>
+                                                                        <select class="form-select" name="offDay" placeholder={edit.offDay} value={inputs.offDay || ""} onChange={handleChange} >
+                                                                            <option selected>---SELECT---</option>
+                                                                            {weekday.map((weekday) => (
+                                                                                <option>{weekday}</option>
+                                                                            ))}
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-6 input-group">
+                                                                        <span class="input-group-text" id="addon-wrapping">OPENING TIME</span>
+                                                                        <input type="text" class="form-control" aria-describedby="addon-wrapping" name="openingTime" placeholder={edit.openingTime} value={inputs.openingTime || ""} onChange={handleChange} />
+                                                                        <span class="input-group-text" id="addon-wrapping">am</span>
+                                                                    </div>
+                                                                    <div class="col-6 input-group">
+                                                                        <span class="input-group-text" id="addon-wrapping1">CLOSING TIME</span>
+                                                                        <input type="text" class="form-control" aria-describedby="addon-wrapping1" name="closingTime" placeholder={edit.closingTime} value={inputs.closingTime || ""} onChange={handleChange} />
+                                                                        <span class="input-group-text" id="addon-wrapping1">pm</span>
+                                                                    </div>
 
+                                                                    <div class="col-12 d-grid">
+                                                                        <button type="submit" class="btn btn-danger">ADD</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <a onClick={() => dispatch(dlt(shopItem, shops))} style={{ textDecoration: "none", border: "1px solid white", padding: "2px 5px" }} className="m-1 text-center text-white">Delete</a>
                                         </td>
 

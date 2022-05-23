@@ -82,7 +82,7 @@ const Navbar = () => {
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <p class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Area</p>
+                                <p class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Area</p>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     {uniqueList1.map((curItem) => (
                                         <Link style={{ textDecoration: "none" }} to={`/shopList/category`}>
@@ -92,7 +92,7 @@ const Navbar = () => {
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <p class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Status</p>
+                                <p class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Status</p>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <Link style={{ textDecoration: "none" }} to={`/shopList/category`}>
                                         <li><p class="dropdown-item" onClick={() => dispatch(status(shops, day))}>Open</p></li>

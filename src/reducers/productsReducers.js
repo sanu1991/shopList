@@ -1,4 +1,4 @@
-const initialState = { shops: [], edit: [] };
+const initialState = { shops: [], edit: {} };
 
 const productsReducers = (state = initialState, { type, payload, payload1 }) => {
     switch (type) {
@@ -14,20 +14,20 @@ const productsReducers = (state = initialState, { type, payload, payload1 }) => 
 
         case "EDT":
             console.log(payload, payload1);
+            console.log(state);
             return { ...state, edit: payload };
 
         case "EDIT_SHOPS":
+            console.log(state);
             console.log(payload, payload1);
             const index = payload1.findIndex((e) => e.id === payload.id);
             console.log(index);
             payload1[index] = payload;
-            console.log(payload1);
-            // state.edit = [];
-            return { ...state, shops: [...payload1] };
+            console.log(payload1, payload);
+            return { ...state, shops: [...payload1], edit: {} };
 
         default: return state;
     }
 }
-// console.log(state);
 
 export default productsReducers;
