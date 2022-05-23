@@ -103,10 +103,10 @@ const Navbar = () => {
                                 </ul>
                             </li>
                         </ul>
-                        <form class="d-flex">
+                        {/* <form class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+                        </form> */}
                     </div>
                 </div>
             </nav>
@@ -122,48 +122,48 @@ const Navbar = () => {
                         </div>
                         <div class="modal-body">
                             <div className="container-fluid">
-                                <form class="row g-3 mx-auto fs-5" onSubmit={handleSubmit}>
+                                <form class="row g-3 mx-auto fs-5 needs-validation" novalidate onSubmit={handleSubmit}>
                                     <div class="col-md-12">
                                         <label class="form-label">SHOP NAME</label>
                                         <input type="text" name="shopName" class="form-control" value={inputs.shopName || ""} onChange={handleChange} required />
                                     </div>
                                     <div class="col-md-12">
-                                        <label class="form-label">LOCATION</label>
-                                        {/* <input type="text" name="area" class="form-control" value={inputs.area || ""} onChange={handleChange} required /> */}
-                                        <select class="form-select" name="area" value={inputs.area || ""} onChange={handleChange}>
-                                            <option selected>---SELECT---</option>
+                                        <label class="form-label" >LOCATION</label>
+                                        <select class="form-select" name="area" value={inputs.area || ""} onChange={handleChange} required>
+                                            <option selected disabled value="">---SELECT---</option>
                                             {uniqueList1.map((curItem) => (
-                                                <option>{curItem}</option>
+                                                <option required>{curItem}</option>
                                             ))}
                                         </select>
+
                                     </div>
                                     <div class="col-md-12">
-                                        <label class="form-label">CATEGORY</label>
-                                        {/* <input type="text" name="category" class="form-control" value={inputs.category || ""} onChange={handleChange} required /> */}
-                                        <select class="form-select" name="category" value={inputs.category || ""} onChange={handleChange}>
-                                            <option selected>---SELECT---</option>
+                                        <label class="form-label" >CATEGORY</label>
+                                        <select class="form-select" name="category" value={inputs.category || ""} onChange={handleChange} required>
+                                            <option selected disabled value="">---SELECT---</option>
                                             {uniqueList.map((curItem) => (
-                                                <option>{curItem}</option>
+                                                <option required>{curItem}</option>
                                             ))}
                                         </select>
+
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">OFF DAY</label>
-                                        <select class="form-select" name="offDay" value={inputs.offDay || ""} onChange={handleChange}>
-                                            <option selected>---SELECT---</option>
+                                        <select class="form-select" name="offDay" value={inputs.offDay || ""} onChange={handleChange} required>
+                                            <option selected disabled value="">---SELECT---</option>
                                             {weekday.map((weekday) => (
-                                                <option>{weekday}</option>
+                                                <option required>{weekday}</option>
                                             ))}
                                         </select>
                                     </div>
                                     <div class="col-6 input-group">
                                         <span class="input-group-text" id="addon-wrapping">OPENING TIME</span>
-                                        <input type="number" class="form-control" aria-describedby="addon-wrapping" name="openingTime" value={inputs.openingTime || ""} onChange={handleChange} />
+                                        <input type="number" class="form-control" aria-describedby="addon-wrapping" name="openingTime" value={inputs.openingTime || ""} onChange={handleChange} required />
                                         <span class="input-group-text" id="addon-wrapping">am</span>
                                     </div>
                                     <div class="col-6 input-group">
                                         <span class="input-group-text" id="addon-wrapping1">CLOSING TIME</span>
-                                        <input type="number" class="form-control" aria-describedby="addon-wrapping1" name="closingTime" value={inputs.closingTime || ""} onChange={handleChange} />
+                                        <input type="number" class="form-control" aria-describedby="addon-wrapping1" name="closingTime" value={inputs.closingTime || ""} onChange={handleChange} required />
                                         <span class="input-group-text" id="addon-wrapping1">pm</span>
                                     </div>
 
